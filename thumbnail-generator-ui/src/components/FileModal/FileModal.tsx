@@ -17,8 +17,8 @@ export const FileModal: React.FC<FileModalProps> = (props) => {
       animation={false}
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Your thumbnails
+        <Modal.Title id="contained-modal-title-vcenter" className="text-dark">
+          <h4>Your thumbnails 🙌</h4>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>{props.children}</Modal.Body>

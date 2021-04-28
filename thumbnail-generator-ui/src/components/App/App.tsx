@@ -1,5 +1,4 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import "./App.css";
 import Register from "../Register/Register";
 import AuthProvider from "../../context/context.auth";
@@ -12,22 +11,20 @@ export interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
   return (
-    <Container className="app-thumbnail-container">
-      <Router>
-        <AuthProvider>
-          <Switch>
-            <PrivateRoute
-              exact
-              path="/"
-              component={Resizer}
-              redirectPath="/login"
-            />
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-          </Switch>
-        </AuthProvider>
-      </Router>
-    </Container>
+    <Router>
+      <AuthProvider>
+        <Switch>
+          <PrivateRoute
+            exact
+            path="/"
+            component={Resizer}
+            redirectPath="/login"
+          />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </AuthProvider>
+    </Router>
   );
 };
 

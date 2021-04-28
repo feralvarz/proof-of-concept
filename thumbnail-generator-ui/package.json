@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
+    "clsx": "^1.1.1",
     "dotenv": "^8.2.0",
     "firebase": "^8.4.2",
     "lodash": "^4.17.21",
