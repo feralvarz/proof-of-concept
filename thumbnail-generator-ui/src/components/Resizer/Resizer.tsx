@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Button, Navbar, ProgressBar } from "react-bootstrap";
+import { Button, Nav, Navbar, ProgressBar } from "react-bootstrap";
 import { uploadCroppedFile } from "../../util/helpers";
 import { Cropper as CropBox } from "react-cropper";
 import { ILoadedFile, IThumbnailSize } from "../../util/types";
@@ -8,13 +8,17 @@ import "cropperjs/dist/cropper.css";
 import "./Resizer.css";
 import { FileModal } from "../FileModal/FileModal";
 import Logo from "../../favicon.png";
+import { useAuth } from "../../context/context.auth";
+import { useHistory } from "react-router-dom";
 
 export const Resizer: React.FC = () => {
+  const { currentUser, logOutUser } = useAuth();
   const cropperRef = useRef<HTMLImageElement>(null);
   const [fileInfo, setFileInfo] = useState<ILoadedFile>();
   const [loading, setLoading] = useState<number | false>(false);
   const [thumbnails, setThumbnails] = useState<IThumbnailSize[]>([]);
   const [showModal, setShowModal] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     if (thumbnails.length) {
@@ -22,6 +26,12 @@ export const Resizer: React.FC = () => {
       setShowModal(true);
     }
   }, [thumbnails]);
+
+  function logout() {
+    logOutUser()
+      .then(() => history.push("/login"))
+      .catch((err) => console.error(err));
+  }
 
   const handleCrop = useCallback(() => {
     if (fileInfo) {
@@ -53,6 +63,12 @@ export const Resizer: React.FC = () => {
           />{" "}
           Thumbnails Demo App
         </Navbar.Brand>
+        <Nav className="ml-auto">
+          <Nav.Link disabled className="text-white">
+            {currentUser?.email}
+          </Nav.Link>
+          <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+        </Nav>
       </Navbar>
       <main className="app-thumbnail-container container-fluid container-xl">
         <div className="resizer h-100 col">
