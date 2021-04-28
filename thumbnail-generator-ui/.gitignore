@@ -4,3 +4,7 @@ dist
 dist-ssr
 *.local
 .firebaserc
+.env.production
+firebase-debug.log
+firebase.json
+.firebase
