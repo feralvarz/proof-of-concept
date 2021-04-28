@@ -1,0 +1,7 @@
+.file-modal {
+  width: 432px;
+}
+
+.thumbnail-item a:hover img {
+  border-color: var(--primary);
+}
