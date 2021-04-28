@@ -40,8 +40,6 @@ Build a simple UI for a thumbnail generator.
 
 ## Installation
 
----
-
 **Important ⚠️**: The project needs `node >= 12.0.0`. I suggest to use NVM (Node Version Manager) to easily switch between node versions: [Read more about NVM](https://github.com/nvm-sh/nvm)
 
 Run `npm install` to start
